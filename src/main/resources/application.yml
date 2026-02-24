@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: codesentinel-ai
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/codesentinel}
+    username: ${DB_USERNAME:codesentinel}
+    password: ${DB_PASSWORD:codesentinel}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  shutdown: graceful
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      probes:
+        enabled: true
